@@ -1,0 +1,17 @@
+.hour-cell {
+    text-align: right;
+    border-top: solid 1px grey;
+}
+
+.text-cell {
+    border-top: solid 1px grey;
+    border-right: solid 1px grey;
+    border-left: solid 1px grey;
+    padding: .5rem;
+    white-space: pre-line;    
+}
+
+.save-cell {
+    text-align: center;
+    padding: 1rem;
+}
