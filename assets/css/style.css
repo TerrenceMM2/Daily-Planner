@@ -2,6 +2,20 @@ html {
   overflow-y: scroll;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #CCC;
+    border-radius: 10px;
+    -webkit-transition: color 0.25s ease;
+}
+
 .jumbotron {
     margin: 3em;
 }
@@ -34,14 +48,14 @@ textarea:focus {
 
 .hour-cell {
     text-align: right;
-    border-top: solid 1px grey;
+    border-top: solid 1px lightgray;
     padding-top: .5em;
 }
 
 .text-cell {
     border-bottom: solid 1px white;
-    border-right: solid 1px grey;
-    border-left: solid 1px grey;
+    border-right: solid 1px lightgrey;
+    border-left: solid 1px lightgrey;
     padding: .5em;
     white-space: pre-line;   
     height: 89px;
@@ -50,4 +64,18 @@ textarea:focus {
 .save-cell {
     text-align: center;
     padding: 1rem;
+    background-color: lightblue;
+    border-top: solid 15px lightblue;
+    border-bottom: solid 13px lightblue;
+    border-radius: 0px 10px 10px 0px;
+    margin-bottom: 1px;
+}
+
+i {
+    transition: color .2s ease;
+}
+
+i:hover {
+    color: white;
+    transition: color .2s ease;
 }

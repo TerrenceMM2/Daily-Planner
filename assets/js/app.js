@@ -34,7 +34,7 @@ $(document).ready(function () {
             const hourCell = $("<div>").addClass("hour-cell col-1").text(hour + " " + hourDay);
             const textCell = $("<textarea>").addClass("text-cell col-10").attr({"id": "text-" + i, "disabled": boolean});
             textCell.addClass(bgColor);
-            const saveCell = $("<div>").addClass("save-cell col-1 m-auto")
+            const saveCell = $("<div>").addClass("save-cell col-1")
             const icon = $("<i>").addClass("fas fa-save fa-lg").attr("id", i);
             saveCell.append(icon);
             row.append(hourCell, textCell, saveCell)
@@ -45,7 +45,7 @@ $(document).ready(function () {
     $(".save-cell > i").on("click", function() {
         var textCell = "#text-" + this.id;
         let textVal = $(textCell).val();
-        console.log(textVal);
+        console.log(textCell);
     })
 
 });
