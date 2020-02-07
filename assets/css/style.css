@@ -16,8 +16,21 @@ html {
     -webkit-transition: color 0.25s ease;
 }
 
+body {
+    font-family: 'Zilla Slab', serif;
+}
+
 .jumbotron {
     margin: 3em;
+}
+
+.subtitle {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.moment {
+    font-weight: 500;
 }
 
 #container {
@@ -27,6 +40,7 @@ html {
 textarea {
     resize: none;
     border: 0;
+    font-family: 'Indie Flower', cursive;
 }
 
 textarea:focus {

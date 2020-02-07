@@ -11,6 +11,7 @@ $(document).ready(function () {
         let hour = i;
         let bgColor;
         let boolean = true;
+        let savedText;
 
         if (i > 8 && i < 18) {
             if (i > 12) {
@@ -29,10 +30,14 @@ $(document).ready(function () {
                 boolean = false
             }
 
+            if (localStorage.getItem("#text-" + i)); {
+                savedText = localStorage.getItem("#text-" + i)
+            }
+
             const container = $("#container");
             const row = $("<div>").addClass("row")
             const hourCell = $("<div>").addClass("hour-cell col-1").text(hour + " " + hourDay);
-            const textCell = $("<textarea>").addClass("text-cell col-10").attr({"id": "text-" + i, "disabled": boolean});
+            const textCell = $("<textarea>").addClass("text-cell col-10").attr({"id": "text-" + i, "disabled": boolean}).text(savedText);
             textCell.addClass(bgColor);
             const saveCell = $("<div>").addClass("save-cell col-1")
             const icon = $("<i>").addClass("fas fa-save fa-lg").attr("id", i);
@@ -45,7 +50,7 @@ $(document).ready(function () {
     $(".save-cell > i").on("click", function() {
         var textCell = "#text-" + this.id;
         let textVal = $(textCell).val();
-        console.log(textCell);
+        localStorage.setItem(textCell, textVal)
     })
 
 });
