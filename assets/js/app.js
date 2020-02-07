@@ -5,7 +5,12 @@ $(document).ready(function() {
     $("#current-date").text(moment().format('dddd[,] MMMM Do[,] YYYY'));
     $("#current-time").text(moment().tz(timezone).format('h[:]mm A z'));
 
-    const hourBlock = function(num) {
+    $("#container").on("click", "i", function(event){ 
+        let id = event.target.id;
+        saveBlock(id);
+    });
+
+    const hourBlock = (num) => {
         for (var i = 0; i < num; i++) {
 
             let hourDay = "AM";
@@ -19,12 +24,19 @@ $(document).ready(function() {
             const container = $("#container");
             const row = $("<div>").addClass("row")
             const hourCell = $("<div>").addClass("hour-cell col-1").text((hour + 9) + " " + hourDay);
-            const dataCell = $("<div>").addClass("text-cell col-10").attr("id", "block-" + i).text("This is a test.\n This is a test.");
-            const saveCell = $("<div>").addClass("save-cell col-1").html('<i class="fas fa-save"></i>');
-            row.append(hourCell, dataCell, saveCell)
+            const textCell = $("<textarea>").addClass("text-cell col-10").attr("id", "block-" + i);
+            const saveCell = $("<div>").addClass("save-cell col-1 m-auto")
+            const icon = $("<i>").addClass("fas fa-save fa-lg").attr("id", i);
+            saveCell.append(icon);
+            row.append(hourCell, textCell, saveCell)
             container.append(row);
-
         }
+    }
+
+    const saveBlock = (num) => {
+        let blockRef = "#block-" + num;
+        let block = $(blockRef).text();
+        console.log(block);
     }
 
     hourBlock(9);

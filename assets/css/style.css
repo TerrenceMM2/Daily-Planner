@@ -1,14 +1,34 @@
+html {
+  overflow-y: scroll;
+}
+
+.container {
+    margin-bottom: 2em;
+}
+
+textarea {
+    resize: none;
+    border: 0;
+}
+
+textarea:focus {
+    outline: none !important;
+    box-shadow: 0 0 10px grey;
+}
+
 .hour-cell {
     text-align: right;
     border-top: solid 1px grey;
+    padding-top: .5em;
 }
 
 .text-cell {
     border-top: solid 1px grey;
     border-right: solid 1px grey;
     border-left: solid 1px grey;
-    padding: .5rem;
-    white-space: pre-line;    
+    padding: .5em;
+    white-space: pre-line;   
+    height: 89px;
 }
 
 .save-cell {
