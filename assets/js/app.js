@@ -1,9 +1,11 @@
 $(document).ready(function () {
 
     const timezone = moment.tz.guess();
-    const currentTime = moment().hour();
+    const currentTime = moment().hour();;
 
-    $("#current-date").text(moment().format('dddd[,] MMMM Do[,] YYYY'));
+    const date = moment().format('dddd[,] MMMM Do[,] YYYY');
+
+    $("#current-date").text(date);
     $("#current-time").text(moment().tz(timezone).format('h[:]mm A z'));
 
     for (var i = 0; i < 24; i++) {
@@ -14,7 +16,10 @@ $(document).ready(function () {
         let savedText;
 
         if (i > 8 && i < 18) {
-            if (i > 12) {
+            if (i == 12) {
+                hourDay = "PM";
+            }
+            else if (i > 12) {
                 hourDay = "PM";
                 hour = i - 12;
             }
@@ -30,8 +35,11 @@ $(document).ready(function () {
                 boolean = false
             }
 
-            if (localStorage.getItem("#text-" + i)); {
-                savedText = localStorage.getItem("#text-" + i)
+            if (localStorage.getItem("planner-" + i) !== null) {
+                let savedEntry = JSON.parse(localStorage.getItem("planner-" + i));
+                if (savedEntry.creationDate === date) {
+                    savedText = savedEntry.textVal;
+                }
             }
 
             const container = $("#container");
@@ -50,7 +58,10 @@ $(document).ready(function () {
     $(".save-cell > i").on("click", function() {
         var textCell = "#text-" + this.id;
         let textVal = $(textCell).val();
-        localStorage.setItem(textCell, textVal)
+        localStorage.setItem("planner-" + this.id, JSON.stringify({
+            creationDate: date,
+            textCell, textVal
+        }))
     })
 
 });
