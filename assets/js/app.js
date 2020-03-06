@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     const timezone = moment.tz.guess();
-    const currentTime = moment().hour();;
+    const currentTime = moment().hour();
 
     const date = moment().format('dddd[,] MMMM Do[,] YYYY');
 
@@ -47,8 +47,15 @@ $(document).ready(function () {
             const hourCell = $("<div>").addClass("hour-cell col-1").text(hour + " " + hourDay);
             const textCell = $("<textarea>").addClass("text-cell col-10").attr({"id": "text-" + i, "disabled": boolean}).text(savedText);
             textCell.addClass(bgColor);
-            const saveCell = $("<div>").addClass("save-cell col-1")
-            const icon = $("<i>").addClass("fas fa-save fa-lg").attr("id", i);
+            let saveCell = "";
+            let icon = "";
+            if (boolean) {
+                saveCell = $("<div>").addClass("save-cell-disabled col-1");
+                icon = $("<i>").addClass("fas fa-save fa-lg").attr("id", i).addClass("save-icon-disabled");
+            } else {
+                saveCell = $("<div>").addClass("save-cell col-1");
+                icon = $("<i>").addClass("fas fa-save fa-lg").attr("id", i).addClass("save-icon");
+            }
             saveCell.append(icon);
             row.append(hourCell, textCell, saveCell)
             container.append(row);
@@ -62,6 +69,7 @@ $(document).ready(function () {
             creationDate: date,
             textCell, textVal
         }))
+        $('.toast').toast("show");
     })
 
 });
