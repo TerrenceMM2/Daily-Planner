@@ -33,6 +33,12 @@ body {
     font-weight: 500;
 }
 
+#current-time {
+    display: inline-block;
+    width: 63px;
+    text-align: left;
+}
+
 #container {
     margin-bottom: 3em;
 }

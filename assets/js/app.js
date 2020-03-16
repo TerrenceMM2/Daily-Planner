@@ -1,12 +1,20 @@
 $(document).ready(function () {
 
+    clearInterval(runningTime);
+
     const timezone = moment.tz.guess();
     const currentTime = moment().hour();
 
     const date = moment().format('dddd[,] MMMM Do[,] YYYY');
 
     $("#current-date").text(date);
-    $("#current-time").text(moment().tz(timezone).format('h[:]mm A z'));
+    $("#current-time").text(moment().tz(timezone).format('h[:]mm:ss'));
+    $("#current-timezone").text(moment().tz(timezone).format('A z[.]'));
+    var runningTime = setInterval(() => {
+        $("#current-time").text(moment().tz(timezone).format('h[:]mm:ss'));
+        $("#current-timezone").text(moment().tz(timezone).format('A z[.]'));
+    }, 1000)
+
 
     for (var i = 0; i < 24; i++) {
         let hourDay = "AM";
